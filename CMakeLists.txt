@@ -14,16 +14,10 @@ set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 set(CMAKE_CXX_CLANG_FORMAT "clang-format")
 set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE "iwyu")
 
-set(SRC_DIR src)
-set(TEST_DIR test)
-
-file(GLOB_RECURSE ALL_SOURCE_FILES 
-    ${CMAKE_SOURCE_DIR}/${SRC_DIR}/*.cpp 
-    ${CMAKE_SOURCE_DIR}/${SRC_DIR}/*.c
-    ${CMAKE_SOURCE_DIR}/${SRC_DIR}/*.h
-    ${CMAKE_SOURCE_DIR}/${TEST_DIR}/*.cpp
-    ${CMAKE_SOURCE_DIR}/${TEST_DIR}/*.c
-    ${CMAKE_SOURCE_DIR}/${TEST_DIR}/*.h
+file(GLOB_RECURSE ALL_SOURCE_FILES
+    ${CMAKE_SOURCE_DIR}/pocs/*.cpp
+    ${CMAKE_SOURCE_DIR}/pocs/*.c
+    ${CMAKE_SOURCE_DIR}/pocs/*.h
 )
 
 add_custom_target(fix
@@ -31,10 +25,8 @@ add_custom_target(fix
     COMMENT "Running clang-format to fix formatting..."
 )
 
-# Enable testing (must be called before add_subdirectory for test)
 enable_testing()
 
-add_subdirectory(src)
-add_subdirectory(test)
+add_subdirectory(pocs/cppunit)
 
-add_dependencies(test_runner fix)
+add_dependencies(cppunit_runner fix)

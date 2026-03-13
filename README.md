@@ -43,19 +43,27 @@ set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE "iwyu")
 
 If you run into clang-tidy issues, there's a `make fix` target that can do the work for you
 
-## Test suite
+## PoCs
 
-Unit test are based on gtest and gmock. To run tests, jump into the container and run:
+Proof-of-concept projects live under `pocs/`. The first PoC is **CppUnit** (unit testing).
+
+### CppUnit PoC
+
+Requires CppUnit (e.g. `apt-get install libcppunit-dev` in the container). To build and run:
 
 ~~~bash
+mkdir -p build
 cd build
 cmake ..
-make test
+make
+./pocs/cppunit/cppunit_runner
+# or
+ctest
 ~~~
 
-## Building the sources:
+## Building the sources
 
-This project is based on CMake. To compile everything 
+This project is based on CMake. To compile everything:
 
 ~~~bash
 mkdir -p build
@@ -64,7 +72,4 @@ cmake ..
 make
 ~~~
 
-The executable files can be found at:
-
-- app: build/src/cxx_app
-- test suite: build/test/test_suite
+The CppUnit test runner is at: `build/pocs/cppunit/cppunit_runner`

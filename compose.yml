@@ -1,7 +1,7 @@
 services:
-  cxx-template:
+  multiplatform-libs:
     build: .
-    container_name: cxx-template
+    container_name: multiplatform-libs
     volumes:
       - .:/workspace
     stdin_open: true

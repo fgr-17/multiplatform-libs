@@ -36,8 +36,6 @@ class TestCalculator : public CppUnit::TestFixture {
     }
 };
 
-int main() {
-    CppUnit::TextTestRunner runner;
-    runner.addTest(TestCalculator::suite());
-    return runner.run() ? 0 : 1;
+CppUnit::Test* TestCalculatorSuite() {
+    return TestCalculator::suite();
 }
